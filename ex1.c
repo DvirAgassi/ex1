@@ -1,7 +1,7 @@
 /******************
-Name:
-ID:
-Assignment:
+Name: Dvir Agassi
+ID: 215786328
+Assignment: 1
 *******************/
 #include <stdio.h>
 
@@ -13,7 +13,28 @@ int main() {
   printf("What bit:\n");
   /*Scan two integers (representing number and a position)
   Print the bit in this position. */
-  
+  int x, y, bit = 1, bitwise = 0;
+  scanf("%d", &x);
+  scanf("%d", &y);
+    
+  while (x > 0) {
+      bit = bit * 10 + x % 2;
+      x = x / 2;
+  }
+  //printf("%d\n", bit);
+  while (bit > 1) {
+      bitwise = bitwise * 10 + bit % 10;
+      bit = bit / 10;
+  }
+  //printf("%d\n", bitwise);
+  while (y > 0) {
+      bitwise = bitwise / 10;
+      //printf("%d\n", bitwise);
+      y--;
+  }
+  printf("%d\n", bitwise%10);
+
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Set bit
   printf("\nSet bit:\n");
   /*Scan two integers (representing number and a position)
@@ -21,18 +42,143 @@ int main() {
   Print the output
   Now make sure it's "off" (equal to 0)
   Print the output */
+  int x, y, pows = 1, bit = 1, bitwise = 0, z;
+  scanf("%d", &x);
+  scanf("%d", &y);
+    
+  while (x > 0) {
+    bit = bit * 10 + x % 2;
+    x = x / 2;
+  }
+  //printf("%d\n", bit);
+  while (bit > 1) {
+    bitwise = bitwise * 10 + bit % 10;
+    bit = bit / 10;
+  }
 
+  while (y > 0) {
+    pows *= 10;
+    y--;
+  }
+  
+  z = bitwise % pows;
+  bitwise /= pows;
+
+  int the_bitwise, two = 1, dec;
+  if (bitwise % 2 == 1) {
+    the_bitwise = bitwise * pows + z;
+    while (the_bitwise > 0) {
+      dec += (the_bitwise % 10) * two;
+      two *= 2;
+      the_bitwise /= 10;
+    }
+    printf("%d\n", dec);
+    dec = 0;
+    two = 1;
+    bitwise -= 1;
+    the_bitwise = bitwise * pows + z;
+    while (the_bitwise > 0) {
+      dec += (the_bitwise % 10) * two;
+      two *= 2;
+      the_bitwise /= 10;
+    }
+    printf("%d\n", dec);
+    dec = 0;
+    two = 1;
+  } else {
+    bitwise += 1;
+    the_bitwise = bitwise * pows + z;
+    while (the_bitwise > 0) {
+      dec += (the_bitwise % 10) * two;
+      two *= 2;
+      the_bitwise /= 10;
+    }
+    printf("%d\n", dec);
+    dec = 0;
+    two = 1;
+    bitwise -= 1;
+    the_bitwise = bitwise * pows + z;
+    while (the_bitwise > 0) {
+      dec += (the_bitwise % 10) * two;
+      two *= 2;
+      the_bitwise /= 10;
+    }
+    printf("%d\n", dec);
+    dec = 0;
+    two = 1;
+  }
+
+  
+
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Toggle bit
   printf("\nToggle bit:\n");
   /*Scan two integers (representing number and a position)
   Toggle the bit in this position
   Print the new number */
+  int x, y, pows = 1, bit = 1, bitwise = 0, z;
+  scanf("%d", &x);
+  scanf("%d", &y);
+    
+  while (x > 0) {
+    bit = bit * 10 + x % 2;
+    x = x / 2;
+  }
+  //printf("%d\n", bit);
+  while (bit > 1) {
+    bitwise = bitwise * 10 + bit % 10;
+    bit = bit / 10;
+  }
+
+  while (y > 0) {
+    pows *= 10;
+    y--;
+  }
   
+  z = bitwise % pows;
+  bitwise /= pows;
+
+  int the_bitwise, two = 1, dec;
+  if (bitwise % 2 == 1) {
+    bitwise -= 1;
+    the_bitwise = bitwise * pows + z;
+    while (the_bitwise > 0) {
+      dec += (the_bitwise % 10) * two;
+      two *= 2;
+      the_bitwise /= 10;
+    }
+    printf("%d\n", dec);
+    dec = 0;
+    two = 1;
+  } else {
+    bitwise += 1;
+    the_bitwise = bitwise * pows + z;
+    while (the_bitwise > 0) {
+      dec += (the_bitwise % 10) * two;
+      two *= 2;
+      the_bitwise /= 10;
+    }
+    printf("%d\n", dec);
+    dec = 0;
+    two = 1;
+  }
+
+
+  
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Even - Odd
   printf("\nEven - Odd:\n");
   /* Scan an integer
   If the number is even - print 1, else - print 0. */
-  
+  int x;
+  scanf("%d", &x);
+  if (x%2==0) {
+    printf("1\n");
+  } else {
+    printf("0\n");
+  }
+
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // 3, 5, 7, 11
   printf("\n3, 5, 7, 11:\n");
   /* Scan two integers in octal base
