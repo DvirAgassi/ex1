@@ -184,12 +184,12 @@ int main() {
   /* Scan two integers in octal base
   sum them up and print the result in hexadecimal base
   Print only 4 bits, in positions: 3,5,7,11 in the result. */
-  int num1, num2, bit=1, bitwise=0;
+  long num1, num2, bit=1, bitwise=0;
   scanf("%o", &num1);
   scanf("%o", &num2);
   
-  int x  = num1 + num2;
-  
+  long x  = num1 + num2;
+  printf("%X\n", x);
   while (x > 0) {
       bit = bit * 10 + x % 2;
       x = x / 2;
@@ -209,6 +209,7 @@ int main() {
     bitwise /= 10;
     count++;
   }
+  count = 0;
   
   while (amount > 0) {
       printf("0");
