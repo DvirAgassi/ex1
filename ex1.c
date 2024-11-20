@@ -21,7 +21,7 @@ int main() {
   // make it from decimal to binary
   while (x > 0) {
       bit = bit * 10 + x % 2;
-      x = x / 2;
+      x /= 2;
   }
   // reverse from bit to bitwise (without the 1 at the start)
   while (bit > 1) {
@@ -44,7 +44,8 @@ int main() {
   Now make sure it's "off" (equal to 0)
   Print the output */
   // same as before, rem is remainder
-  int x, y, pows = 1, bit = 1, bitwise = 0, rem;
+  //reset
+  x = 0, y = 0, pows = 1, bit = 1, bitwise = 0, rem = 0;
   scanf("%d", &x);
   scanf("%d", &y);
     
@@ -124,7 +125,7 @@ int main() {
   /*Scan two integers (representing number and a position)
   Toggle the bit in this position
   Print the new number */
-  int x, y, pows = 1, bit = 1, bitwise = 0, rem;
+  x = 0, y = 0, pows = 1, bit = 1, bitwise = 0, rem = 0;
   scanf("%d", &x);
   scanf("%d", &y);
     
@@ -181,7 +182,7 @@ int main() {
   printf("\nEven - Odd:\n");
   /* Scan an integer
   If the number is even - print 1, else - print 0. */
-  int x;
+  x = 0;
   scanf("%d", &x);
   // if modulo 2 == 0 it means the num is even (ends with 0 cause it is binary)
   if (x%2==0) {
