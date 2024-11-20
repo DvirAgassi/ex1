@@ -21,9 +21,10 @@ int main() {
   scanf("%d", &y);
 
   // make it from decimal to binary
-  while (x > 0) {
-      bit = bit * 10 + x % 2;
-      x /= 2;
+  int x2 = x;
+  while (x2 > 0) {
+      bit = bit * 10 + x2 % 2;
+      x2 /= 2;
   }
   // reverse from bit to bitwise (without the 1 at the start)
   while (bit > 1) {
@@ -36,7 +37,7 @@ int main() {
       bitwise = bitwise / 10;
       y1--;
   }
-  printf("The bit in position %d of number %d is: %d\n", x, y, bitwise%10);
+  printf("The bit in position %d of number %d is: %d\n", y, x, bitwise%10);
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Set bit
@@ -46,81 +47,30 @@ int main() {
   Print the output
   Now make sure it's "off" (equal to 0)
   Print the output */
-  // same as before, rem is remainder, pows is like 1/10/100/1000 etc. + reset
-  x = 0, y = 0, bit = 1, bitwise = 0;
-  int pows = 1, rem = 0;
+  // reset
+  x = 0, y = 0, bitwise = 0;
+  // power the two with the position
+  int two = 1;
   printf("Please enter a number:\n");
   scanf("%d", &x);
   printf("Please enter a position:\n");
   scanf("%d", &y);
     
-  while (x > 0) {
-    bit = bit * 10 + x % 2;
-    x = x / 2;
-  }
-  while (bit > 1) {
-    bitwise = bitwise * 10 + bit % 10;
-    bit = bit / 10;
-  }
-  // get the pows for the position
-  y1 = y;
+  y1=y; 
+  bitwise = x/10;
   while (y1 > 0) {
-    pows *= 10;
-    y1--;
+      two *= 2;
+      bitwise /= 10;
+      y1--;
   }
-  // get the num after the pow - for example the number is 256 with pow 100, the rem will be 56
-  rem = bitwise % pows;
-  bitwise /= pows;
 
-  // two - to make it decimal you need to multiply with 2 pow num (0, 1, 2...), dec is the final decimal
-  int the_bitwise, two = 1, dec;
   // you asked to print the num with 1 first so we are checking if the num is "odd" - has 1 at the end (turned on)
   if (bitwise % 2 == 1) {
-    // make it the final binary num, if multiply by the pow and add the rem to get it
-    the_bitwise = bitwise * pows + rem;
-    // check num num and multiply it by the 2 pow, add to the decimal. after that double the two for next number
-    while (the_bitwise > 0) {
-      dec += (the_bitwise % 10) * two;
-      two *= 2;
-      the_bitwise /= 10;
-    }
-    printf("Number with bit %d set to 1: %d\n", y, dec);
-    // reset the variables to not make an error
-    dec = 0;
-    two = 1;
-    // make the bit 0 (turned off)
-    bitwise -= 1;
-    the_bitwise = bitwise * pows + rem;
-    while (the_bitwise > 0) {
-      dec += (the_bitwise % 10) * two;
-      two *= 2;
-      the_bitwise /= 10;
-    }
-    printf("Number with bit %d set to 0: %d\n", y, dec);
-    dec = 0;
-    two = 1;
-  } else {
-    // if the num from before was actually 0 and not 1, add 1 cause we need to print the turned on num first
-    bitwise += 1;
-    the_bitwise = bitwise * pows + rem;
-    while (the_bitwise > 0) {
-      dec += (the_bitwise % 10) * two;
-      two *= 2;
-      the_bitwise /= 10;
-    }
-    printf("Number with bit %d set to 1: %d\n", y, dec);
-    dec = 0;
-    two = 1;
-    bitwise -= 1;
-    the_bitwise = bitwise * pows + rem;
-    while (the_bitwise > 0) {
-      dec += (the_bitwise % 10) * two;
-      two *= 2;
-      the_bitwise /= 10;
-    }
-    printf("Number with bit %d set to 0: %d\n", y, dec);
-    dec = 0;
-    two = 1;
+      printf("Number with bit %d set to 1: %d\n", y, x);
+      printf("Number with bit %d set to 0: %d\n", y, x-two);
+  } else {    
+      printf("Number with bit %d set to 1: %d\n", y, x+two);
+      printf("Number with bit %d set to 0: %d\n", y, x);
   }
 
   
@@ -131,59 +81,25 @@ int main() {
   /*Scan two integers (representing number and a position)
   Toggle the bit in this position
   Print the new number */
-  x = 0, y = 0, pows = 1, bit = 1, bitwise = 0, rem = 0;
+  x = 0, y = 0, bitwise = 0, two = 1;
   printf("Please enter a number:\n");
   scanf("%d", &x);
   printf("Please enter a position:\n");
   scanf("%d", &y);
     
-  while (x > 0) {
-    bit = bit * 10 + x % 2;
-    x = x / 2;
-  }
-  //printf("%d\n", bit);
-  while (bit > 1) {
-    bitwise = bitwise * 10 + bit % 10;
-    bit = bit / 10;
-  }
-
-  y1 = y;
+  y1=y; 
+  bitwise = x/10;
   while (y1 > 0) {
-    pows *= 10;
-    y1--;
+      two *= 2;
+      bitwise /= 10;
+      y1--;
   }
-  
-  rem = bitwise % pows;
-  bitwise /= pows;
 
-  the_bitwise = 0, two = 1, dec = 0;
-  // check if the rightest num is 0/1
   if (bitwise % 2 == 1) {
-    // if 1, make it 0
-    bitwise -= 1;
-    the_bitwise = bitwise * pows + rem;
-    while (the_bitwise > 0) {
-      dec += (the_bitwise % 10) * two;
-      two *= 2;
-      the_bitwise /= 10;
-    }
-    printf("Number with bit %d toggled: %d\n", y, dec);
-    dec = 0;
-    two = 1;
-  } else {
-    // if 0, make it 1
-    bitwise += 1;
-    the_bitwise = bitwise * pows + rem;
-    while (the_bitwise > 0) {
-      dec += (the_bitwise % 10) * two;
-      two *= 2;
-      the_bitwise /= 10;
-    }
-    printf("Number with bit %d toggled: %d\n", y, dec);
-    dec = 0;
-    two = 1;
+      printf("Number with bit %d toggled: %d\n", y, x-two);
+  } else {    
+      printf("Number with bit %d toggled: %d\n", y, x+two);
   }
-
 
   
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
