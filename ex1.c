@@ -43,9 +43,9 @@ int main() {
   Print the output
   Now make sure it's "off" (equal to 0)
   Print the output */
-  // same as before, rem is remainder
-  //reset
-  x = 0, y = 0, pows = 1, bit = 1, bitwise = 0, rem = 0;
+  // same as before, rem is remainder, pows is like 1/10/100/1000 etc. + reset
+  x = 0, y = 0, bit = 1, bitwise = 0;
+  int pows = 1, rem = 0;
   scanf("%d", &x);
   scanf("%d", &y);
     
@@ -147,7 +147,7 @@ int main() {
   rem = bitwise % pows;
   bitwise /= pows;
 
-  int the_bitwise, two = 1, dec;
+  the_bitwise = 0, two = 1, dec = 0;
   // check if the rightest num is 0/1
   if (bitwise % 2 == 1) {
     // if 1, make it 0
