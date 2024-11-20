@@ -199,12 +199,12 @@ int main() {
   Print only 4 bits, in positions: 3,5,7,11 in the result. */
   long num1, num2, bit1=1, bitwise1=0;
   // get the nums in octal
-  scanf("%o", &num1);
-  scanf("%o", &num2);
+  scanf("%lo", &num1);
+  scanf("%lo", &num2);
   
   long x1  = num1 + num2;
   // print as hex
-  printf("%X\n", x1);
+  printf("%lX\n", x1);
 
   // make it as binary num
   while (x1 > 0) {
@@ -221,7 +221,7 @@ int main() {
   while (bitwise1 > 0) {
     if (count == 3 || count == 5 || count == 7 || count == 11)
     {
-      printf("%d", bitwise1 % 10);
+      printf("%ld", bitwise1 % 10);
       amount--;
     }
     bitwise1 /= 10;
