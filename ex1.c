@@ -15,7 +15,9 @@ int main() {
   Print the bit in this position. */
   // x = number, y = position, bit = revers num with 1 at the start (so it will count the 0), bitwise = the num in binary
   int x, y, bit = 1, bitwise = 0;
+  printf("Please enter a number:\n");
   scanf("%d", &x);
+  printf("Please enter a position:\n");
   scanf("%d", &y);
 
   // make it from decimal to binary
@@ -29,11 +31,12 @@ int main() {
       bit = bit / 10;
   }
   // delete the rightest num until you get the position (like >> right shift)
-  while (y > 0) {
+  int y1 = y;
+  while (y1 > 0) {
       bitwise = bitwise / 10;
-      y--;
+      y1--;
   }
-  printf("%d\n", bitwise%10);
+  printf("The bit in position %d of number %d is: %d\n", x, y, bitwise%10);
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // Set bit
@@ -46,7 +49,9 @@ int main() {
   // same as before, rem is remainder, pows is like 1/10/100/1000 etc. + reset
   x = 0, y = 0, bit = 1, bitwise = 0;
   int pows = 1, rem = 0;
+  printf("Please enter a number:\n");
   scanf("%d", &x);
+  printf("Please enter a position:\n");
   scanf("%d", &y);
     
   while (x > 0) {
@@ -58,9 +63,10 @@ int main() {
     bit = bit / 10;
   }
   // get the pows for the position
-  while (y > 0) {
+  y1 = y;
+  while (y1 > 0) {
     pows *= 10;
-    y--;
+    y1--;
   }
   // get the num after the pow - for example the number is 256 with pow 100, the rem will be 56
   rem = bitwise % pows;
@@ -78,7 +84,7 @@ int main() {
       two *= 2;
       the_bitwise /= 10;
     }
-    printf("%d\n", dec);
+    printf("Number with bit %d set to 1: %d\n", y, dec);
     // reset the variables to not make an error
     dec = 0;
     two = 1;
@@ -90,7 +96,7 @@ int main() {
       two *= 2;
       the_bitwise /= 10;
     }
-    printf("%d\n", dec);
+    printf("Number with bit %d set to 0: %d\n", y, dec);
     dec = 0;
     two = 1;
   } else {
@@ -102,7 +108,7 @@ int main() {
       two *= 2;
       the_bitwise /= 10;
     }
-    printf("%d\n", dec);
+    printf("Number with bit %d set to 1: %d\n", y, dec);
     dec = 0;
     two = 1;
     bitwise -= 1;
@@ -112,7 +118,7 @@ int main() {
       two *= 2;
       the_bitwise /= 10;
     }
-    printf("%d\n", dec);
+    printf("Number with bit %d set to 0: %d\n", y, dec);
     dec = 0;
     two = 1;
   }
@@ -126,7 +132,9 @@ int main() {
   Toggle the bit in this position
   Print the new number */
   x = 0, y = 0, pows = 1, bit = 1, bitwise = 0, rem = 0;
+  printf("Please enter a number:\n");
   scanf("%d", &x);
+  printf("Please enter a position:\n");
   scanf("%d", &y);
     
   while (x > 0) {
@@ -139,9 +147,10 @@ int main() {
     bit = bit / 10;
   }
 
-  while (y > 0) {
+  y1 = y;
+  while (y1 > 0) {
     pows *= 10;
-    y--;
+    y1--;
   }
   
   rem = bitwise % pows;
@@ -158,7 +167,7 @@ int main() {
       two *= 2;
       the_bitwise /= 10;
     }
-    printf("%d\n", dec);
+    printf("Number with bit %d toggled: %d\n", y, dec);
     dec = 0;
     two = 1;
   } else {
@@ -170,7 +179,7 @@ int main() {
       two *= 2;
       the_bitwise /= 10;
     }
-    printf("%d\n", dec);
+    printf("Number with bit %d toggled: %d\n", y, dec);
     dec = 0;
     two = 1;
   }
@@ -183,6 +192,7 @@ int main() {
   /* Scan an integer
   If the number is even - print 1, else - print 0. */
   x = 0;
+  printf("Please enter a number:\n");
   scanf("%d", &x);
   // if modulo 2 == 0 it means the num is even (ends with 0 cause it is binary)
   if (x%2==0) {
@@ -199,12 +209,14 @@ int main() {
   Print only 4 bits, in positions: 3,5,7,11 in the result. */
   long num1, num2, bit1=1, bitwise1=0;
   // get the nums in octal
+  printf("Please enter the first number (octal):\n");
   scanf("%lo", &num1);
+  printf("Please enter the second number (octal):\n");
   scanf("%lo", &num2);
   
   long x1  = num1 + num2;
   // print as hex
-  printf("%lX\n", x1);
+  printf("The sum in hexadecimal: %lX\n", x1);
 
   // make it as binary num
   while (x1 > 0) {
@@ -216,6 +228,7 @@ int main() {
       bit1 = bit1 / 10;
   }
 
+  printf("The 3,5,7,11 bits are: ");
   // amount = 4 because this is the amount of nums we need to print
   int count = 0, amount = 4;
   while (bitwise1 > 0) {
@@ -234,7 +247,7 @@ int main() {
       printf("0");
       amount--;
   }
-
+  printf("\n");
   
   printf("Bye!\n");
   
